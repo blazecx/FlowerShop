@@ -1,9 +1,9 @@
 import { Order } from "src/order/entities/order.entity";
-import { Column, Entity, PrimaryColumn, OneToMany } from "typeorm";
+import { Column, Entity, PrimaryColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class User {
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     id: number; // ид
     @Column()
     name: string; // имя

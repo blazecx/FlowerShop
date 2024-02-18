@@ -1,12 +1,17 @@
+import { MinLength, IsEmail } from "class-validator";
+
 export class CreateUserDto {
-    id: number; // ид
+
     name: string; // имя
     surname: string; // фамилия
     patronymic: string; // отчество
     login: string; // логин
+    @IsEmail()
     email: string; // имайл
+    @MinLength(6, {message: "Пароль состоит из 6 символов"})
     password: string; // пароль епт
-    password_repeat: string; // повтор пароля
+    // @MinLength(6, {message: "Пароль состоит из 6 символов"})
+    // password_repeat: string; // повтор пароля
     rules: boolean; // соглашение с правилами
     isAdmin: boolean; // проверка на админа
 }
