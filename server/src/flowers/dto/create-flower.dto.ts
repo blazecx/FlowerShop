@@ -1,7 +1,7 @@
 import { Category } from "src/category/entities/category.entity";
 
 export class CreateFlowerDto {
-    id: number; // id
+
     name: string; // название
     price: number; // цена
     category_id: Category; // категория

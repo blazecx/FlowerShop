@@ -1,6 +1,5 @@
 import { Category } from "src/category/entities/category.entity";
 export declare class CreateFlowerDto {
-    id: number;
     name: string;
     price: number;
     category_id: Category;
