@@ -14,8 +14,5 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
-  // @Get()
-  // findOne() {
-  //   return this.userService.findOne();
-  // }
+
 }

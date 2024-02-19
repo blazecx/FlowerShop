@@ -12,7 +12,6 @@ export declare class UserService {
             login: string;
             email: string;
             password: string;
-            rules: boolean;
             isAdmin: boolean;
         } & User;
     }>;

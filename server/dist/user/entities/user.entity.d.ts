@@ -7,7 +7,6 @@ export declare class User {
     login: string;
     email: string;
     password: string;
-    rules: boolean;
     isAdmin: boolean;
     orders: Order[];
 }

@@ -1,5 +1,9 @@
+import { IsNotEmpty, IsOptional } from "class-validator";
+import { Flower } from "src/flowers/entities/flower.entity";
+
 export class CreateCategoryDto {
-
-    name: string; // название категории 
-
+    @IsNotEmpty()
+    name: string; // название категории
+    @IsOptional() 
+    flower?: Flower
 }

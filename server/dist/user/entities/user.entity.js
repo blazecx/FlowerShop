@@ -46,10 +46,6 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Boolean)
-], User.prototype, "rules", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Boolean)
 ], User.prototype, "isAdmin", void 0);
 __decorate([
     (0, typeorm_1.OneToMany)(() => order_entity_1.Order, order => order.user),
