@@ -44,7 +44,6 @@ let UserService = class UserService {
             login: createUserDto.login,
             email: createUserDto.email,
             password: await argon2.hash(createUserDto.password),
-            rules: createUserDto.rules,
             isAdmin: createUserDto.isAdmin
         });
         return { user };
@@ -52,7 +51,7 @@ let UserService = class UserService {
     async findOne(login) {
         return await this.userRepository.findOne({
             where: {
-                login: login
+                login
             }
         });
     }

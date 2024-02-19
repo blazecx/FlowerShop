@@ -11,7 +11,6 @@ export declare class UserController {
             login: string;
             email: string;
             password: string;
-            rules: boolean;
             isAdmin: boolean;
         } & import("./entities/user.entity").User;
     }>;

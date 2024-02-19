@@ -17,8 +17,7 @@ export class User {
     email: string; // имайл
     @Column()
     password: string; // пароль епт
-    @Column()
-    rules: boolean; // соглашение с правилами
+
     @Column()
     isAdmin: boolean; // проверка на админа
     @OneToMany(() => Order, order => order.user)

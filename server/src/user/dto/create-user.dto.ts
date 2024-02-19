@@ -12,6 +12,6 @@ export class CreateUserDto {
     password: string; // пароль епт
     // @MinLength(6, {message: "Пароль состоит из 6 символов"})
     // password_repeat: string; // повтор пароля
-    rules: boolean; // соглашение с правилами
+
     isAdmin: boolean; // проверка на админа
 }
