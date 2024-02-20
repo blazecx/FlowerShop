@@ -13,5 +13,6 @@ export declare class UserController {
             password: string;
             isAdmin: boolean;
         } & import("./entities/user.entity").User;
+        token: string;
     }>;
 }
