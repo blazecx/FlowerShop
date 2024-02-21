@@ -1,26 +1,55 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateFlowerDto } from './dto/create-flower.dto';
 import { UpdateFlowerDto } from './dto/update-flower.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Flower } from './entities/flower.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class FlowersService {
-  create(createFlowerDto: CreateFlowerDto) {
-    return 'This action adds a new flower';
+  constructor(
+    @InjectRepository(Flower) private readonly flowerRepository: Repository<Flower>
+    ){}
+
+  async create(createFlowerDto: CreateFlowerDto) {
+    const flower = await this.flowerRepository.save({
+    name: createFlowerDto.name,
+    price: createFlowerDto.price,
+    quantity: createFlowerDto.quantity,
+    image: createFlowerDto.image,
+    description: createFlowerDto.description,
+    country: createFlowerDto.country,
+    year: createFlowerDto.year,
+    model: createFlowerDto.model
+    })
+    return {flower}
   }
 
-  findAll() {
-    return `This action returns all flowers`;
+  async findAll() {
+    return await this.flowerRepository.find({});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} flower`;
+  async findOne(id: number) {
+    const flower = await this.flowerRepository.findOne({
+      where: {id}
+    })
+    if(!flower) throw new NotFoundException("Цветы не найдены")
+    return flower;
   }
 
-  update(id: number, updateFlowerDto: UpdateFlowerDto) {
-    return `This action updates a #${id} flower`;
+  async update(id: number, updateFlowerDto: UpdateFlowerDto) {
+    const flower = await this.flowerRepository.findOne({
+    where: {id}
+    })
+    if(!flower) throw new NotFoundException("Цветы не найдены")
+    return await this.flowerRepository.update(id, updateFlowerDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} flower`;
+  async remove(id: number) {
+    const flower = await this.flowerRepository.findOne({
+      where: {id}
+      })
+      if(!flower) throw new NotFoundException("Цветы не найдены")
+    return await this.flowerRepository.delete(id);
   }
 }
