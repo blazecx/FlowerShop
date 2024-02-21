@@ -6,15 +6,12 @@ import { Flower } from './entities/flower.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
-
 export class FlowersService {
   constructor(
     @InjectRepository(Flower) private readonly flowerRepository: Repository<Flower>
     ){}
-
-
     
-   async create(createFlowerDto: CreateFlowerDto) {
+     async create(createFlowerDto: CreateFlowerDto) {
     const flower = await this.flowerRepository.save({
       name: createFlowerDto.name,
       price: createFlowerDto.price,
