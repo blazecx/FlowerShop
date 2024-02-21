@@ -10,21 +10,6 @@ export class FlowersService {
   constructor(
     @InjectRepository(Flower) private readonly flowerRepository: Repository<Flower>
     ){}
-    
-     async create(createFlowerDto: CreateFlowerDto) {
-    const flower = await this.flowerRepository.save({
-      name: createFlowerDto.name,
-      price: createFlowerDto.price,
-      quantity: createFlowerDto.quantity,
-      image: createFlowerDto.image,
-      description: createFlowerDto.description,
-      country: createFlowerDto.country,
-      year: createFlowerDto.year,
-      model: createFlowerDto.model
-      })
-      return {flower}
-  }
-
   async findAll() {
     return await this.flowerRepository.find({});
   }
