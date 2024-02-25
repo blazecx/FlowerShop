@@ -9,6 +9,9 @@ export declare class FlowersController {
             name: string;
             price: number;
             quantity: number;
+            category: {
+                id: number;
+            };
             image: string;
             description: string;
             country: string;
