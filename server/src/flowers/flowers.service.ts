@@ -16,22 +16,36 @@ export class FlowersService {
     name: createFlowerDto.name,
     price: createFlowerDto.price,
     quantity: createFlowerDto.quantity,
+    category: {id: +createFlowerDto.category},
     image: createFlowerDto.image,
     description: createFlowerDto.description,
     country: createFlowerDto.country,
     year: createFlowerDto.year,
-    model: createFlowerDto.model
+    model: createFlowerDto.model,
     })
     return {flower}
   }
 
   async findAll() {
-    return await this.flowerRepository.find({});
+    const flower = await this.flowerRepository.find({
+      order:{
+        id: 'DESC'
+      },
+      relations:{
+        category: true
+      }
+    })
+    return flower;
   }
 
   async findOne(id: number) {
     const flower = await this.flowerRepository.findOne({
-      where: {id}
+      where: {
+        id
+      },
+      relations:{
+        category: true
+      }
     })
     if(!flower) throw new NotFoundException("Цветы не найдены")
     return flower;
