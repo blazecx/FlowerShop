@@ -1,3 +1,4 @@
+import { Cart } from "src/cart/entities/cart.entity";
 import { Order } from "src/order/entities/order.entity";
 export declare class User {
     id: number;
@@ -9,4 +10,5 @@ export declare class User {
     password: string;
     isAdmin: boolean;
     orders: Order[];
+    cart: Cart;
 }
