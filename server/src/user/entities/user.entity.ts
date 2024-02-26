@@ -1,3 +1,4 @@
+import { Cart } from "src/cart/entities/cart.entity";
 import { Order } from "src/order/entities/order.entity";
 import { Column, Entity, PrimaryColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
@@ -22,4 +23,6 @@ export class User {
     isAdmin: boolean; // проверка на админа
     @OneToMany(() => Order, order => order.user)
     orders: Order[]; // временная колонка хз переделать надо
+    @OneToMany(() => Cart, cart => cart.user)
+    cart: Cart; // доставочка
 }

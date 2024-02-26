@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Cart = void 0;
 const flower_entity_1 = require("../../flowers/entities/flower.entity");
 const order_entity_1 = require("../../order/entities/order.entity");
+const user_entity_1 = require("../../user/entities/user.entity");
 const typeorm_1 = require("typeorm");
 let Cart = class Cart {
 };
@@ -21,6 +22,10 @@ __decorate([
     __metadata("design:type", Number)
 ], Cart.prototype, "id", void 0);
 __decorate([
+    (0, typeorm_1.ManyToOne)(() => user_entity_1.User, user => user.cart),
+    __metadata("design:type", user_entity_1.User)
+], Cart.prototype, "user", void 0);
+__decorate([
     (0, typeorm_1.ManyToOne)(() => order_entity_1.Order, order => order.cart),
     __metadata("design:type", order_entity_1.Order)
 ], Cart.prototype, "order", void 0);
@@ -29,7 +34,7 @@ __decorate([
     __metadata("design:type", flower_entity_1.Flower)
 ], Cart.prototype, "flower", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ default: 1 }),
     __metadata("design:type", Number)
 ], Cart.prototype, "quantity", void 0);
 exports.Cart = Cart = __decorate([

@@ -10,11 +10,14 @@ exports.CartModule = void 0;
 const common_1 = require("@nestjs/common");
 const cart_service_1 = require("./cart.service");
 const cart_controller_1 = require("./cart.controller");
+const typeorm_1 = require("@nestjs/typeorm");
+const cart_entity_1 = require("./entities/cart.entity");
 let CartModule = class CartModule {
 };
 exports.CartModule = CartModule;
 exports.CartModule = CartModule = __decorate([
     (0, common_1.Module)({
+        imports: [typeorm_1.TypeOrmModule.forFeature([cart_entity_1.Cart])],
         controllers: [cart_controller_1.CartController],
         providers: [cart_service_1.CartService],
     })
