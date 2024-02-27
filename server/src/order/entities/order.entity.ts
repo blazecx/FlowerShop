@@ -1,4 +1,5 @@
 import { Cart } from "src/cart/entities/cart.entity";
+import { Flower } from "src/flowers/entities/flower.entity";
 import { User } from "src/user/entities/user.entity";
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
 
@@ -14,4 +15,6 @@ export class Order {
     timestamp: Date; // Время думаю нахуй его я добавил, пускай в душе не ебут, когда придёт их заказы, далбаебы
     @OneToMany(() => Cart, cart => cart.order)
     cart: Cart[];
+    @ManyToOne(() => Flower, flower => flower.order)
+    flower: Flower; // юсер
 }

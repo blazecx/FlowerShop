@@ -1,5 +1,6 @@
 import { Category } from "src/category/entities/category.entity";
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Order } from "src/order/entities/order.entity";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
 
 
 @Entity()
@@ -24,5 +25,6 @@ export class Flower {
     year: number; // год
     @Column()
     model: string; // модель
-
+    @OneToMany(() => Order, order => order.flower)
+    order: Order[];
 }

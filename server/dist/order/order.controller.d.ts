@@ -4,9 +4,19 @@ import { UpdateOrderDto } from './dto/update-order.dto';
 export declare class OrderController {
     private readonly orderService;
     constructor(orderService: OrderService);
-    create(createOrderDto: CreateOrderDto): string;
-    findAll(): string;
-    findOne(id: string): string;
-    update(id: string, updateOrderDto: UpdateOrderDto): string;
-    remove(id: string): string;
+    create(createOrderDto: CreateOrderDto): Promise<{
+        user: {
+            id: number;
+        };
+        status: {
+            id: number;
+        };
+        flower: {
+            id: number;
+        };
+    }>;
+    findAll(): Promise<string>;
+    findOne(id: string): Promise<import("./entities/order.entity").Order>;
+    update(id: string, updateOrderDto: UpdateOrderDto): Promise<import("typeorm").UpdateResult>;
+    remove(id: string): Promise<import("typeorm").DeleteResult>;
 }

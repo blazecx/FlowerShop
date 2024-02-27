@@ -1,4 +1,5 @@
 import { Category } from "src/category/entities/category.entity";
+import { Order } from "src/order/entities/order.entity";
 export declare class Flower {
     id: number;
     name: string;
@@ -10,4 +11,5 @@ export declare class Flower {
     country: string;
     year: number;
     model: string;
+    order: Order[];
 }
