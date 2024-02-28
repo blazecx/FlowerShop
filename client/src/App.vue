@@ -1,139 +1,92 @@
 <script setup>
-import card from './components/card.vue';
-import mainpg from './components/mainpg.vue'
-import fot from './components/footer.vue'
-import cardlist from './components/cardlist.vue';
+import { onMounted, ref } from 'vue';
+import axios from 'axios'
+import mainpg2 from './components/mainpg2.vue';
+import cardList from './components/cardlist.vue';
+
+const items = ref([])
+
+onMounted(async () =>{
+    try{
+        const {data} = await axios.get('http://localhost:3001/api/flowers');
+        items.value = data;
+    }
+    catch (err){
+        console.log(err);
+    }
+
+})
 </script>
 
 <template>
-<mainpg/>
-<!-- почему мы -->
-<h2>ПОЧЕМУ МЫ?</h2>
-<div class="containerWe">
-    <div class="content">
-        <img src="./assets/img/Map.svg" alt="Map">
-        <h3>Расположение</h3>
-        <p>Удобное расположение <br>
-            в центре города</p>
+<mainpg2/>
+<div class="Sortcontent">
+    <div class="conteiiiner">
+    <p>Сортировать по</p>
+    <select>
+        <option value="">По новизне</option>
+        <option value="">По название</option>
+        <option value="">По цене (дешёвые)</option>
+        <option value="">По цене (дорогие)</option>
+    </select>
     </div>
-    <div class="content">
-        <img src="./assets/img/car.svg" alt="">
-        <h3>Быстрая доставка</h3>
-        <p>Быстрая доставка <br>
-            до 10 минут.</p>
-    </div>
-    <div class="content">
-        <img src="./assets/img/clock.svg" alt="">
-        <h3>Экономия времени</h3>
-        <p>
-            Заказывая у нас, вы <br>
-            экономите свое время.
-        </p>
-    </div>
-    <div class="content">
-        <img src="./assets/img/flowerico.svg" alt="">
-        <h3>Свежие цветы</h3>
-        <p>
-            Лучшие поставщики и <br>
-            большой ассортимент цветов
-        </p>
+    <div class="search">
+        <input type="text" placeholder="Поиск...">
+        <img src="./assets/img/search.svg" alt="">
     </div>
 </div>
-<h2>НОВИНКИ КОМПАНИИ</h2>
-<div>
-    <h2>ТУТ БУДЕТ СЛАЙДЕР ЛЕНЬ БИБЛИОТЕКУ КАЧАТЬ, позже <br>
-        НЕ ЗАБЫТЬ ЕГО СДЕЛАТЬ!!!!!!!</h2>
-</div>
-<h2>ОТЗЫВЫ КЛИЕНТОВ</h2>
-<div class="containerRew">
-    <div class="contentRewies">
-        <h3>Артём Третьяк</h3>
-        <p>Я очень доволен букетом, который я получил в этом магазине. Цветы были свежими и красивыми, и букетом было очень приятно смотреть. Они были прекрасно уложены и доставлены вовремя. Я бы рекомендовал этот магазин всем, кто ищет красивые цветы для своих праздников и событий.</p>
-    </div>
-    <div class="contentRewies">
-        <h3>Артём Третьяк</h3>
-        <p>Я очень доволен букетом, который я получил в этом магазине. Цветы были свежими и красивыми, и букетом было очень приятно смотреть. Они были прекрасно уложены и доставлены вовремя. Я бы рекомендовал этот магазин всем, кто ищет красивые цветы для своих праздников и событий.</p>
-    </div>
-</div>
-<fot/>
+<cardList :items="items"/>
 </template>
 
-<style scoped>
-h2{
-    margin-top: 6.25rem;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 48px;
-    line-height: 65px;
-}
-
-.containerWe{
-    margin-top: 3.125rem;
+<style >
+.Sortcontent{
+    margin: auto;
+    margin-top: 10rem;
     display: flex;
-    gap: 3rem;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    width: 1340px;
+    height: 96px;
+    background: #FF84B8;
+    border-radius: 20px;
 }
 
-.content{
-    display: grid;
-    grid-template-columns: (4, auto);
-    text-align: center;
-    justify-items: center;
+select{
+    width: 140px;
+    height: 25px;
+    background: #F35B9C;
+    border-radius: 5px;
+    border: none;
 }
 
-.content:nth-child(2){
-    margin-top: 0.6rem;
-}
-
-.content h3{
-
-font-weight: 500;
-font-size: 24px;
-line-height: 29px;
-margin-top: 1.3rem;
-}
-
-.content p{
-    font-size: 20px;
-    line-height: 24px;
-    margin-top: 0.6rem;
-}
-
-.contentRewies{
-    width: 620px;
-    height: 371px;
+input{
+    padding: 1rem;
+    width: 837px;
+    height: 38px;
     background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.01);
-    box-shadow: 0px 0px 9.3px #B7B4B4;
-    border-radius: 15px;
-    padding: 2.2rem;
+    border-radius: 20px;
+    border: none;
 }
 
-.contentRewies h3{
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
+.search{
+    position: relative;
 }
 
-.contentRewies p{
-    padding-top: 2rem;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    width: 32rem;
-
+.search img{
+    position: absolute;
+    right: 8px;
+    top: 10px;
 }
 
-.containerRew{
-    margin: auto;
-    margin-top: 3.125rem;
-    width: 83.625rem;
+.conteiiiner{
     display: flex;
-    justify-content: space-between;
+    gap: 1rem;
 }
 
-.contentRewies h3{
-    margin: auto;
-}
+.Sortcontent p{
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
 
+}
 </style>

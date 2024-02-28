@@ -10,12 +10,12 @@ defineProps({
 
     
     <div class="card">
-        <img :src="imgSrc" alt="">
+        <img :src="imgSrc" :alt="imgSrc" class="flower">
         <div class="content">
             <div class="conteiner">
                 <div class="conteiner2">
-                    <p>{{ title }}</p>
-                    <span>{{ price }}</span>                
+                    <p>«{{ title }}»</p>
+                    <span>{{ price }}₽</span>                
                 </div>
                 <div class="buttoni">
                     <button class="podrob">Подробнее</button>
@@ -29,6 +29,12 @@ defineProps({
     
     <style scoped>
 
+ .flower{
+width: 319.76px;
+height: 333.15px;
+border-radius: 15px 15px 0px 0px;
+
+}
     .conteiner2{
         margin-top: 1rem;
     }
@@ -69,6 +75,7 @@ defineProps({
     }
     
     button{
+        cursor: pointer;
         border-radius: 11px;
         border: none;
         color: white;
