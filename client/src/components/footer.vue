@@ -55,7 +55,7 @@ footer{
 }
 
 .conteiner{
-    margin-top: 3rem;
+    margin-top: 5.5rem;
     display: flex;
     gap: 11rem;
 }
@@ -70,12 +70,18 @@ color: #742E42;
 }
 
 nav{
+margin-top: 1rem;
 display: flex;
 flex-direction: column;
+gap: 0.7rem;
 }
 
 .last a{
     display: flex;
+}
+
+.last a p{
+    margin-left: 0.6rem;
 }
 
 </style>
