@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+p, span{
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+color: #742E42;
+
+
+}
