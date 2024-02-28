@@ -41,7 +41,7 @@ gap: 1.9rem;
 
 .logo p{
 
-font-family: 'Nunito';
+font-family: "Nunito Sans", sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 32px;

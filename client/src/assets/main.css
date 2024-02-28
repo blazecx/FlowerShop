@@ -4,16 +4,45 @@
     box-sizing: border-box;
 }
 
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('./fonts/Nunito/static/NunitoSans_10pt-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Nunito';
+    src: url('./fonts/Nunito/static/NunitoSans_10pt-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+  }
+
 a{
     text-decoration: none;
 }
 
-p, span{
+h2{
+  text-align: center;
+}
+
+h1, h2, h4, h5{
+  font-family: "Nunito Sans", sans-serif;
+
+}
+
+p, span, h1, h2, h3, h4, h5{
+  color: #742E42;
+}
+
+
+p, span, h3{
 
 font-family: 'Montserrat';
 font-style: normal;
 font-weight: 400;
-color: #742E42;
+
 
 
 }

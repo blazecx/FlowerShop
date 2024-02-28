@@ -28,7 +28,7 @@ defineProps({
     </template>
     
     <style scoped>
-    
+
     .conteiner2{
         margin-top: 1rem;
     }
