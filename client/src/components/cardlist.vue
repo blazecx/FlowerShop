@@ -1,32 +1,23 @@
 <script setup>
 import card from './card.vue';
+defineProps({
+    items: Array
+})
 </script>
 
 <template>
     <div class="content">
-        <card imgSrc="src\assets\flowers\flower.png" title="Романтика" :price="5000"/>
-        <card/>
-        <card/>
-        <card/>
-        <card/>
-        <card/>
-        <card/>
-        <card/>      
-        <card/>   
-        <card/>   
-        <card/>   
-        <card/>   
-        <card/>   
-        <card/>   
-        
+        <card v-for="item in items" :key="item.id" :imgSrc="item.image" :title="item.name" :price="item.price"/>
     </div>
 
 </template>
 
 <style scoped>
 .content{
+    margin-top: 3.125rem;
     display: grid;
-    grid-template-columns:repeat(3, minmax(0, 20rem));
+    grid-template-columns:repeat(4, minmax(0, 20rem));
     gap: 1rem;
+    justify-content: center;
 }
 </style>
