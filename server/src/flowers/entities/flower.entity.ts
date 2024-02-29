@@ -12,7 +12,7 @@ export class Flower {
     @Column()
     price: number; // цена
     @ManyToOne(() => Category, category => category.flower)
-    category: Category; //пока хуй знает поменяю, не передаёт пока что котигорию ид
+    category: Category; // категория
     @Column()
     quantity: number; // кол-во
     @Column()
