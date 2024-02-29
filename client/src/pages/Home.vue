@@ -11,19 +11,19 @@ import fot from '../components/footer.vue'
 <h2>ПОЧЕМУ МЫ?</h2>
 <div class="containerWe">
     <div class="content">
-        <img src="./assets/img/Map.svg" alt="Map">
+        <img src="../assets/img/Map.svg" alt="Map">
         <h3>Расположение</h3>
         <p>Удобное расположение <br>
             в центре города</p>
     </div>
     <div class="content">
-        <img src="./assets/img/car.svg" alt="">
+        <img src="../assets/img/car.svg" alt="">
         <h3>Быстрая доставка</h3>
         <p>Быстрая доставка <br>
             до 10 минут.</p>
     </div>
     <div class="content">
-        <img src="./assets/img/clock.svg" alt="">
+        <img src="../assets/img/clock.svg" alt="">
         <h3>Экономия времени</h3>
         <p>
             Заказывая у нас, вы <br>
@@ -31,7 +31,7 @@ import fot from '../components/footer.vue'
         </p>
     </div>
     <div class="content">
-        <img src="./assets/img/flowerico.svg" alt="">
+        <img src="../assets/img/flowerico.svg" alt="">
         <h3>Свежие цветы</h3>
         <p>
             Лучшие поставщики и <br>
@@ -55,7 +55,6 @@ import fot from '../components/footer.vue'
         <p>Я очень доволен букетом, который я получил в этом магазине. Цветы были свежими и красивыми, и букетом было очень приятно смотреть. Они были прекрасно уложены и доставлены вовремя. Я бы рекомендовал этот магазин всем, кто ищет красивые цветы для своих праздников и событий.</p>
     </div>
 </div>
-<fot/>
 </template>
 
 <style scoped>
