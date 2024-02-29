@@ -3,7 +3,7 @@
 </script>
 
 <template>
-<h1>ErrorPage.vue</h1>
+<h1>Registration</h1>
 </template>
 
 <style >
