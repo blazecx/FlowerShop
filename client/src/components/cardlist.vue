@@ -7,7 +7,7 @@ defineProps({
 
 <template>
     <div class="content">
-        <card v-for="item in items" :key="item.id" :imgSrc="item.image" :title="item.name" :price="item.price"/>
+        <card v-for="item in items" :key="item.id" :imgSrc="item.image" :title="item.name" :price="item.price" :id="item.id"/>
     </div>
 
 </template>

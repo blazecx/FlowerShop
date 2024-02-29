@@ -1,5 +1,6 @@
 <script setup>
 defineProps({
+    id: Number,
     imgSrc: String,
     title: String,
     price: Number
@@ -18,7 +19,7 @@ defineProps({
                     <span>{{ price }}₽</span>                
                 </div>
                 <div class="buttoni">
-                    <button class="podrob">Подробнее</button>
+                    <router-link  :to="`/flower/${id}`"><button class="podrob">Подробнее</button></router-link>
                     <button class="inacart"><img src="../assets/img/cartonbut.svg" alt="cart" ></button>
                 </div>  
             </div>
