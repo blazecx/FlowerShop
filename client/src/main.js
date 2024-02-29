@@ -1,5 +1,3 @@
-
-
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -21,7 +19,7 @@ const routes = [
     { path: '/', name: 'Home', component: Home },
     { path: '/catalog', name: 'Catalog', component: Catalog },
     { path: '/cart', name: 'Cart', component: Cart },
-    { path: '/flower', name: 'Flower', component: Flower },
+    { path: '/flower/:id', name: 'Flower', component: Flower },
     { path: '/order', name: 'Order', component: Order },
     { path: '/about', name: 'About', component: About },
     { path: '/login', name: 'Login', component: Login },
@@ -29,11 +27,11 @@ const routes = [
     { path: '/errorpage', name: 'Errorpage', component: Errorpage }
 ]
 
-const router = createRouter({
+  const router = createRouter({
     history: createWebHistory(),
     routes
 })
-
+export default router
 const app = createApp(App)
 
 app.use(router)
