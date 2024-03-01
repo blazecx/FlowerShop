@@ -1,11 +1,22 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, reactive, ref, watch } from 'vue';
 import axios from 'axios'
 import mainpg2 from '../components/mainpg2.vue';
 import cardList from '../components/cardlist.vue';
 
 const items = ref([])
+const filters = reactive({
+    sortBy: '',
+    searchQuerry: '',
+})
 
+const fetchItems = async () =>{
+    
+}
+
+const onChangeSelect = (event) =>{
+    filters.sortBy = event.target.value
+};
 onMounted(async () =>{
     try{
         const {data} = await axios.get('http://localhost:3001/api/flowers');
@@ -16,6 +27,16 @@ onMounted(async () =>{
     }
 
 })
+
+watch(filters ,  async () =>{
+    try{
+        const {data} = await axios.get('http://localhost:3001/api/flowers?' + filters.sortBy);
+        items.value = data;
+    }
+    catch (err){
+        console.log(err);
+    }
+})
 </script>
 
 <template>
@@ -23,11 +44,11 @@ onMounted(async () =>{
 <div class="Sortcontent">
     <div class="conteiiiner">
     <p>Сортировать по</p>
-    <select>
-        <option value="">По новизне</option>
-        <option value="">По название</option>
-        <option value="">По цене (дешёвые)</option>
-        <option value="">По цене (дорогие)</option>
+    <select @change="onChangeSelect">
+        <option value="sortBy=newest&order=DESC">Сначала Старые</option>
+        <option value="sortBy=newest&order=ASC">Сначала Новые</option>
+        <option value="sortBy=price&order=ASC">По цене (дешёвые)</option>
+        <option value="sortBy=price&order=DESC">По цене (дорогие)</option>
     </select>
     </div>
     <div class="search">

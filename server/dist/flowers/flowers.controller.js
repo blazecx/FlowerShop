@@ -24,8 +24,11 @@ let FlowersController = class FlowersController {
     create(createFlowerDto) {
         return this.flowersService.create(createFlowerDto);
     }
-    findAll() {
-        return this.flowersService.findAll();
+    findAll(sortBy, order) {
+        return this.flowersService.findAll(sortBy, order);
+    }
+    searchByName(name) {
+        return this.flowersService.searchByName(name);
     }
     findOne(id) {
         return this.flowersService.findOne(+id);
@@ -47,10 +50,19 @@ __decorate([
 ], FlowersController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
+    __param(0, (0, common_1.Query)('sortBy')),
+    __param(1, (0, common_1.Query)('order')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", void 0)
 ], FlowersController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':name'),
+    __param(0, (0, common_1.Param)('name')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], FlowersController.prototype, "searchByName", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),

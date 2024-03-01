@@ -20,8 +20,9 @@ export declare class FlowersService {
             model: string;
         } & Flower;
     }>;
-    findAll(): Promise<Flower[]>;
+    findAll(sortBy: 'price' | 'newest', order?: 'ASC' | 'DESC'): Promise<Flower[]>;
     findOne(id: number): Promise<Flower>;
     update(id: number, updateFlowerDto: UpdateFlowerDto): Promise<import("typeorm").UpdateResult>;
     remove(id: number): Promise<import("typeorm").DeleteResult>;
+    searchByName(name: string): Promise<Flower[]>;
 }
