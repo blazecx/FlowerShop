@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { FlowersService } from './flowers.service';
 import { CreateFlowerDto } from './dto/create-flower.dto';
 import { UpdateFlowerDto } from './dto/update-flower.dto';
@@ -12,9 +12,18 @@ export class FlowersController {
     return this.flowersService.create(createFlowerDto);
   }
 
+  // http://localhost:3001/api/flowers?sortBy=newest&order=DESC
   @Get()
-  findAll() {
-    return this.flowersService.findAll();
+  findAll(
+    @Query('sortBy') sortBy: 'price' | 'newest',
+    @Query('order') order: 'ASC' | 'DESC'
+  ) {
+    return this.flowersService.findAll(sortBy, order);
+  }
+
+  @Get(':name')
+  searchByName(@Param('name') name: string) {
+    return this.flowersService.searchByName(name);
   }
 
   @Get(':id')

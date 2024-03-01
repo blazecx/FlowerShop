@@ -19,7 +19,8 @@ export declare class FlowersController {
             model: string;
         } & import("./entities/flower.entity").Flower;
     }>;
-    findAll(): Promise<import("./entities/flower.entity").Flower[]>;
+    findAll(sortBy: 'price' | 'newest', order: 'ASC' | 'DESC'): Promise<import("./entities/flower.entity").Flower[]>;
+    searchByName(name: string): Promise<import("./entities/flower.entity").Flower[]>;
     findOne(id: string): Promise<import("./entities/flower.entity").Flower>;
     update(id: string, updateFlowerDto: UpdateFlowerDto): Promise<import("typeorm").UpdateResult>;
     remove(id: string): Promise<import("typeorm").DeleteResult>;

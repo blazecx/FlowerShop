@@ -35,16 +35,21 @@ let FlowersService = class FlowersService {
         });
         return { flower };
     }
-    async findAll() {
-        const flower = await this.flowerRepository.find({
-            order: {
-                id: 'DESC'
-            },
+    async findAll(sortBy, order = 'ASC') {
+        let orderClause = {};
+        if (sortBy === 'price') {
+            orderClause = { price: order };
+        }
+        else if (sortBy === 'newest') {
+            orderClause = { id: order === 'ASC' ? 'DESC' : 'ASC' };
+        }
+        const flowers = await this.flowerRepository.find({
+            order: orderClause,
             relations: {
-                category: true
-            }
+                category: true,
+            },
         });
-        return flower;
+        return flowers;
     }
     async findOne(id) {
         const flower = await this.flowerRepository.findOne({
@@ -74,6 +79,19 @@ let FlowersService = class FlowersService {
         if (!flower)
             throw new common_1.NotFoundException("Цветы не найдены");
         return await this.flowerRepository.delete(id);
+    }
+    async searchByName(name) {
+        const flowers = await this.flowerRepository.find({
+            where: {
+                name: (0, typeorm_2.Like)(`%${name}%`),
+            },
+            relations: {
+                category: true,
+            },
+        });
+        if (!flowers)
+            throw new common_1.NotFoundException("Цветы не найдены");
+        return flowers;
     }
 };
 exports.FlowersService = FlowersService;

@@ -3,7 +3,7 @@ import { CreateFlowerDto } from './dto/create-flower.dto';
 import { UpdateFlowerDto } from './dto/update-flower.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Flower } from './entities/flower.entity';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 
 @Injectable()
 export class FlowersService {
@@ -26,17 +26,25 @@ export class FlowersService {
     return {flower}
   }
 
-  async findAll() {
-    const flower = await this.flowerRepository.find({
-      order:{
-        id: 'DESC'
+
+  async findAll(sortBy: 'price' | 'newest', order: 'ASC' | 'DESC' = 'ASC') {
+    let orderClause = {};
+
+    if (sortBy === 'price') {
+      orderClause = { price: order };
+    } else if (sortBy === 'newest') {
+      orderClause = { id: order === 'ASC' ? 'DESC' : 'ASC' };
+    }
+
+    const flowers = await this.flowerRepository.find({
+      order: orderClause,
+      relations: {
+        category: true,
       },
-      relations:{
-        category: true
-      }
-    })
-    return flower;
-  }
+    });
+    return flowers;
+  }  
+
 
   async findOne(id: number) {
     const flower = await this.flowerRepository.findOne({
@@ -65,5 +73,18 @@ export class FlowersService {
       })
       if(!flower) throw new NotFoundException("Цветы не найдены")
     return await this.flowerRepository.delete(id);
+  }
+
+  async searchByName(name: string) {
+    const flowers = await this.flowerRepository.find({
+      where: {
+        name: Like(`%${name}%`),
+      },
+      relations: {
+        category: true,
+      },
+    });
+    if (!flowers) throw new NotFoundException("Цветы не найдены");
+    return flowers;
   }
 }
