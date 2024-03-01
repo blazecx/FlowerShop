@@ -16,7 +16,7 @@
         </div>
             <div class="buttonssss">
                 <button>Заказать</button>
-                <button>Удалить</button>
+                <button>Удалить </button>
             </div>
     </div>
 </div>
