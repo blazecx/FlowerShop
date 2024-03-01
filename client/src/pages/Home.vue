@@ -2,6 +2,7 @@
 
 import mainpg from '../components/mainpg.vue'
 import fot from '../components/footer.vue'
+import Card from '@/components/card.vue';
 
 </script>
 
@@ -40,10 +41,16 @@ import fot from '../components/footer.vue'
     </div>
 </div>
 <h2>НОВИНКИ КОМПАНИИ</h2>
-<div>
     <h2>ТУТ БУДЕТ СЛАЙДЕР ЛЕНЬ БИБЛИОТЕКУ КАЧАТЬ, позже <br>
         НЕ ЗАБЫТЬ ЕГО СДЕЛАТЬ!!!!!!!</h2>
-</div>
+<div class="card grid" style="display: flex; gap: 1.5rem; margin: 5rem;">        
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+    </div>
+
 <h2>ОТЗЫВЫ КЛИЕНТОВ</h2>
 <div class="containerRew">
     <div class="contentRewies">

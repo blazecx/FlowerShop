@@ -9,11 +9,11 @@
         </div>
         <div class="content2">
             <nav>
-                <a href="">Главная</a>
-                <a href="">О нас</a>
-                <a href="">Где нас найти?</a>
-                <a href=""><img src="../assets/img/profile.svg" alt="" class="profile"></a>
-                <a href=""><img src="../assets/img/cart.svg" alt="" class="cart"></a>
+                <router-link  :to="`/catalog`"><a href="">Каталог</a></router-link>
+                <router-link  :to="`/`"><a href="">Главная</a></router-link>
+                <router-link  :to="`/about`"><a href="">Где нас найти?</a></router-link>
+                <router-link  :to="`/profile`"><a href=""><img src="../assets/img/profile.svg" alt="" class="profile"></a></router-link>
+                <router-link  :to="`/cart`"><a href=""><img src="../assets/img/cart.svg" alt="" class="cart"></a></router-link>
             </nav>
             <div class="conteiner2">
                 <img src="../assets/img/world.svg" alt="" class="world">
